@@ -35,7 +35,7 @@ public privileged aspect AddCheatKey {
 			if (p.hasShip()) {
 				int x = leftMargin + (p.getX() - 1) * placeSize;
 				int y = topMargin + (p.getY() - 1) * placeSize;
-				g.setColor(p.isHit() ? Color.RED:Color.GREEN);
+				g.setColor(p.isHit() ? Color.RED:Color.CYAN);
 				g.fillRect(x + 1, y + 1, placeSize - 1, placeSize - 1);
 				if (p.hasShip() && p.ship().isSunk()) {
 					g.setColor(Color.BLACK);
