@@ -2,10 +2,8 @@ package ext;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -37,8 +35,7 @@ public privileged aspect AddCheatKey {
 			if (p.hasShip()) {
 				int x = leftMargin + (p.getX() - 1) * placeSize;
 				int y = topMargin + (p.getY() - 1) * placeSize;
-				System.out.println("Ship at " + x + " " + y);
-				g.setColor(Color.GREEN);
+				g.setColor(p.isHit() ? Color.RED:Color.GREEN);
 				g.fillRect(x + 1, y + 1, placeSize - 1, placeSize - 1);
 				if (p.hasShip() && p.ship().isSunk()) {
 					g.setColor(Color.BLACK);
@@ -48,7 +45,6 @@ public privileged aspect AddCheatKey {
 			}
 		}
 		g.setColor(oldColor);
-		flag = false;
 
 	}
 
@@ -76,7 +72,7 @@ public privileged aspect AddCheatKey {
 		/** Called when a cheat is requested. */
 		public void actionPerformed(ActionEvent event) {
 			boardPanel.repaint();
-			flag = true;
+			flag = !flag;
 		}
 
 	}
